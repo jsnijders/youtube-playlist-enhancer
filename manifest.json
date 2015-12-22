@@ -1,0 +1,37 @@
+{
+  "name": "YouTube™ Playlist Enhancer",
+  "short_name": "YouTube PLE",
+  "description": "Extra features for YouTube playlists.",
+  "version": "1.5",
+  "author": "Jordy Snijders",
+  "homepage_url": "http://jordysnijders.com",
+
+
+
+  "permissions": [
+    "storage",
+    "*://www.youtube.com/*"
+  ],
+  
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.youtube.com/*"
+      ],
+      "js": [
+        "youtube-playlist-enhancer.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+
+  "icons": {
+    "16": "16.png",
+    "48": "48.png",
+    "128": "128.png"
+  },
+
+
+
+  "manifest_version": 2
+}
