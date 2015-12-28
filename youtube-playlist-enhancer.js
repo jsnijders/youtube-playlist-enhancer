@@ -180,7 +180,8 @@ function main() {
 
 
 
-ready('#pl-video-list', function(element){
+ready('#pl-video-list', function(element) {
+	if (/^\/playlist.*/.test(window.location.pathname) === false) {	return;	}
 	main();
 
 	var videos = document.getElementById('pl-video-list');
