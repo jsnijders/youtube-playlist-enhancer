@@ -6,3 +6,6 @@ https://chrome.google.com/webstore/category/apps
 
 ### Requirements
 - Chrome 20 or higher
+
+### Screenshot
+![](http://jordysnijders.com/img/youtube-playlist-enhancer-screenshot-1.png)
