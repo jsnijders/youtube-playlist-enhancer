@@ -1,5 +1,5 @@
 # YouTube Playlist Enhancer
-An extension for Google Chrome.
+An extension for Google Chrome that adds extra features to playlists on YouTube.
 - Simple digit notation of a playlist's total duration.
 - Human readable notation of a playlist's total duration.
 - Projected time and date for when you will have finished watching an entire playlist.
