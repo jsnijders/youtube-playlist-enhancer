@@ -96,7 +96,7 @@ function main() {
 	});
 
 	// ignore playlists without any videos
-	if(total_seconds == 0) { return; }
+	if (total_seconds == 0) { return; }
 
 	// add a new container with the playlist's total duration
 	var years = Math.floor(total_seconds / 31536000);
@@ -107,9 +107,9 @@ function main() {
 
 	// version 1: the numerical version on the righthand side of the container
 	var total_duration_short = "";
-	if(years > 0) { total_duration_short += years + ":"; }
-	if(days > 0) { total_duration_short += days + ":"; }
-	if(hours > 0) { total_duration_short += pad(hours, 2) + ":"; }
+	if (years > 0) { total_duration_short += years + ":"; }
+	if (days > 0) { total_duration_short += days + ":"; }
+	if (hours > 0) { total_duration_short += pad(hours, 2) + ":"; }
 	total_duration_short += pad(minutes, 2) + ":";
 	total_duration_short += pad(seconds, 2);
 
@@ -117,9 +117,9 @@ function main() {
 	// version 2: the human readable version on the lefthand side of the container
 	play_all_link = document.getElementsByClassName("playlist-play-all")[0].getAttribute("href");
 	var total_duration_long = "<p>";
-	if(years > 0) { total_duration_long += years + " years, "; }
-	if(days > 0) { total_duration_long += days + " days, "; }
-	if(hours > 0) { total_duration_long += hours + " hours, "; }
+	if (years > 0) { total_duration_long += years + " years, "; }
+	if (days > 0) { total_duration_long += days + " days, "; }
+	if (hours > 0) { total_duration_long += hours + " hours, "; }
 	total_duration_long += minutes + " minutes and ";
 	total_duration_long += seconds + " seconds.";
 	total_duration_long += ' That\'s for a total of <span id="available_videos"></span> videos (<span id="unavailable_videos"></span> deleted and/or private videos were excluded).</p>';
