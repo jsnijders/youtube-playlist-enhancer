@@ -72,6 +72,8 @@ function pad(num, size) {
 
 
 
+// human readable notation for days and months
+// to be used for the projected time and date
 const all_days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const all_months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -113,7 +115,6 @@ function main() {
 	total_duration_short += pad(minutes, 2) + ":";
 	total_duration_short += pad(seconds, 2);
 
-
 	// version 2: the human readable version on the lefthand side of the container
 	play_all_link = document.getElementsByClassName("playlist-play-all")[0].getAttribute("href");
 	var total_duration_long = "<p>";
@@ -125,6 +126,7 @@ function main() {
 	total_duration_long += ' That\'s for a total of <span id="available_videos"></span> videos (<span id="unavailable_videos"></span> deleted and/or private videos were excluded).</p>';
 	total_duration_long += ' <p style="margin-top:20px;">Start watching now and you will finish <span id="finished_watching">before you know it</span>. Click <a href="' + play_all_link + '">here</a> to begin.</p>';
 
+	// inject container
 	document.querySelector('div.branded-page-v2-primary-col > div.yt-card').insertAdjacentHTML('afterend', '\
 		<div id="total-duration-container" class="yt-card clearfix"> \
 			<div class="branded-page-v2-body branded-page-v2-primary-column-content"> \
@@ -154,6 +156,7 @@ function main() {
 	else if (include([2, 22], finished_watching.getDate())) { suffix = "nd"; }
 	else if (include([3, 23], finished_watching.getDate())) { suffix = "rd"; }
 
+	// inject projected time and date in the new container
 	var finished_watching_formatted = "{0} {1} {2}{3}, {4} at {5}:{6}:{7}".format(
 		all_days[finished_watching.getDay()],
 		all_months[finished_watching.getMonth()],
@@ -164,16 +167,15 @@ function main() {
 		pad(finished_watching.getMinutes(), 2),
 		pad(finished_watching.getSeconds(), 2)
 	);
-
 	document.getElementById("finished_watching").innerText = "on " + finished_watching_formatted;
-	// todo: refresh every second/minute
+
+	// to do: refresh every second/minute
 	// setTimeout(fn, 1000, total_seconds);
 
-	// add video counts to the new container's text
+	// inject video counts in the new container
 	var available_videos = document.getElementsByClassName("timestamp").length;
 	var total_videos = document.getElementsByClassName("pl-video").length;
 	var unavailable_videos = total_videos - available_videos;
-
 	document.getElementById('available_videos').innerText = available_videos;
 	document.getElementById('unavailable_videos').innerText = unavailable_videos;
 }
@@ -181,9 +183,13 @@ function main() {
 
 
 ready('#pl-video-list', function(element) {
+	// deal with the possibility of a node with id 'pl-video-list' on a page other than /playlist
 	if (/^\/playlist.*/.test(window.location.pathname) === false) {	return;	}
+
+	// execute on element load
 	main();
 
+	// execute on element change
 	var videos = document.getElementById('pl-video-list');
 	var observer = new MutationObserver(function(mutations) {
 		mutations.forEach(function(mutation) {
