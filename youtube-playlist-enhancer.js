@@ -68,6 +68,11 @@ function pad(num, size) {
     return s;
 }
 
+// for date suffix checking
+function include(arr, obj) {
+    return (arr.indexOf(obj) != -1);
+}
+
 
 
 
@@ -76,11 +81,6 @@ function pad(num, size) {
 // to be used for the projected time and date
 const all_days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const all_months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-// for date suffix checking
-function include(arr, obj) {
-    return (arr.indexOf(obj) != -1);
-}
 
 function main() {
 	// remove the total duration container before injecting it
