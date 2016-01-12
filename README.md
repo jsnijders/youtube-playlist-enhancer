@@ -12,7 +12,7 @@ https://chrome.google.com/webstore/detail/youtube-playlist-enhancer/femnjomnioah
 - Chrome 20 or higher
 
 ## Screenshot
-![](http://jordysnijders.com/img/youtube-playlist-enhancer-screenshot-1.png)
+![Screenshot 1](screenshot-1.png)
 
 ## License
 MIT
