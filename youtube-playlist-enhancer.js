@@ -94,7 +94,8 @@ function main() {
 	Array.prototype.forEach.call(timestamps, function(element, i) {
 		var value = element.innerText;
 		var parts = value.split(":");
-		total_seconds += parseInt(parts[0]*60) + parseInt(parts[1]);
+		if (parts.length == 3) { total_seconds += parseInt(parts[0]*60*60) + parseInt(parts[1]*60) + parseInt(parts[2]); }
+		else { total_seconds += parseInt(parts[0]*60) + parseInt(parts[1]); }
 	});
 
 	// ignore playlists without any videos
