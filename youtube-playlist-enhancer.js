@@ -173,9 +173,6 @@ function main() {
 	);
 	document.getElementById("finished_watching").innerText = "on " + finished_watching_formatted;
 
-	// to do: refresh every second/minute
-	// setTimeout(fn, 1000, total_seconds);
-
 	// inject video counts in the new container
 	var available_videos = document.getElementsByClassName("timestamp").length;
 	var total_videos = document.getElementsByClassName("pl-video").length;
