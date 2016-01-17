@@ -15,4 +15,4 @@ https://chrome.google.com/webstore/detail/youtube-playlist-enhancer/femnjomnioah
 ![Screenshot 1](screenshot-1.png)
 
 ## License
-MIT
+[MIT](LICENSE)
