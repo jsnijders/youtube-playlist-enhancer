@@ -77,12 +77,7 @@ function include(arr, obj) {
 
 
 
-// human readable notation for days and months
-// to be used for the projected time and date
-const all_days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-const all_months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-function main() {
+function modifyPlaylistPage() {
 	// remove the total duration container before injecting it
 	var total_duration = document.getElementById('total-duration-container');
 	if (total_duration) { total_duration.parentNode.removeChild(total_duration); }
@@ -160,6 +155,11 @@ function main() {
 	else if (include([2, 22], finished_watching.getDate())) { suffix = "nd"; }
 	else if (include([3, 23], finished_watching.getDate())) { suffix = "rd"; }
 
+	// human readable notation for days and months
+	// to be used for the projected time and date
+	const all_days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+	const all_months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
 	// inject projected time and date in the new container
 	var finished_watching_formatted = "{0} {1} {2}{3}, {4} at {5}:{6}:{7}".format(
 		all_days[finished_watching.getDay()],
@@ -181,21 +181,33 @@ function main() {
 	document.getElementById('unavailable_videos').innerText = unavailable_videos;
 }
 
-
-
 ready('#pl-video-list', function(element) {
 	// deal with the possibility of a node with id 'pl-video-list' on a page other than /playlist
 	if (/^\/playlist.*/.test(window.location.pathname) === false) {	return;	}
 
 	// execute on element load
-	main();
+	modifyPlaylistPage();
 
 	// execute on element change
 	var videos = document.getElementById('pl-video-list');
 	var observer = new MutationObserver(function(mutations) {
 		mutations.forEach(function(mutation) {
-			main();
+			modifyPlaylistPage();
 		});    
 	});
 	observer.observe(videos, { childList: true });
+});
+
+
+
+
+
+function modifyWatchPage() {
+	console.log('#watch-appbar-playlist function is executed');
+}
+
+ready('#watch-appbar-playlist', function(element) {
+	if (/^\/watch.*/.test(window.location.pathname) === false) {	return;	}
+	console.log('#watch-appbar-playlist is ready');
+	modifyWatchPage();
 });
