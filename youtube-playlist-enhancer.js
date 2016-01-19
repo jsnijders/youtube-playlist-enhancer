@@ -204,10 +204,18 @@ ready('#pl-video-list', function(element) {
 
 function modifyWatchPage() {
 	console.log('#watch-appbar-playlist function is executed');
+
+	var controls = document.getElementsByClassName("ytp-chrome-controls");
+	if (controls.length != 1) { return; }
+	controls[0].style.textAlign = "center";
+
+	var left_controls = document.getElementsByClassName("ytp-left-controls");
+	if (controls.length != 1) { return; }
+	left_controls[0].insertAdjacentHTML('afterend', "Playlist: 12:34 / 56:18 (90%)");
 }
 
 ready('#watch-appbar-playlist', function(element) {
-	if (/^\/watch.*/.test(window.location.pathname) === false) {	return;	}
+	if (/^\/watch.*/.test(window.location.pathname) === false) { return; }
 	console.log('#watch-appbar-playlist is ready');
-	modifyWatchPage();
+	// modifyWatchPage();
 });
