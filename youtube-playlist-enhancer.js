@@ -205,6 +205,10 @@ ready('#pl-video-list', function(element) {
 function modifyWatchPage() {
 	console.log('#watch-appbar-playlist function is executed');
 
+	var playlist_url = document.querySelector("*[data-playlist-id]");
+	var playlist_id = playlist_url.getAttribute("data-playlist-id");
+	console.log(playlist_id);
+
 	var controls = document.getElementsByClassName("ytp-chrome-controls");
 	if (controls.length != 1) { return; }
 	controls[0].style.textAlign = "center";
