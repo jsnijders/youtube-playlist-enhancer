@@ -206,7 +206,9 @@ function modifyWatchPage() {
 	console.log('#watch-appbar-playlist function is executed');
 
 	var playlist_url = document.querySelector("*[data-playlist-id]");
+	if (playlist_url === null) { return; }
 	var playlist_id = playlist_url.getAttribute("data-playlist-id");
+	if (playlist_id === null) { return; }
 	console.log(playlist_id);
 
 	var controls = document.getElementsByClassName("ytp-chrome-controls");
