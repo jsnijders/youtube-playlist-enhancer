@@ -205,9 +205,12 @@ ready('#pl-video-list', function(element) {
 function modifyWatchPage() {
 	console.log('#watch-appbar-playlist function is executed');
 
-	var playlist_url = document.querySelector("*[data-playlist-id]");
+	var control_playlist_duration = document.getElementById('control-playlist-duration');
+	if (control_playlist_duration) { control_playlist_duration.parentNode.removeChild(control_playlist_duration); }
+
+	var playlist_url = document.querySelector("*[data-full-list-id]");
 	if (playlist_url === null) { return; }
-	var playlist_id = playlist_url.getAttribute("data-playlist-id");
+	var playlist_id = playlist_url.getAttribute("data-full-list-id");
 	if (playlist_id === null) { return; }
 	console.log(playlist_id);
 
@@ -217,7 +220,7 @@ function modifyWatchPage() {
 
 	var left_controls = document.getElementsByClassName("ytp-left-controls");
 	if (controls.length != 1) { return; }
-	left_controls[0].insertAdjacentHTML('afterend', "Playlist: 12:34 / 56:18 (90%)");
+	left_controls[0].insertAdjacentHTML('afterend', '<span id="control-playlist-duration">Playlist: 12:34 / 56:18 (90%)</span>');
 }
 
 ready('#watch-appbar-playlist', function(element) {
