@@ -203,8 +203,6 @@ ready('#pl-video-list', function(element) {
 
 
 function modifyWatchPage() {
-	console.log('#watch-appbar-playlist function is executed');
-
 	var control_playlist_duration = document.getElementById('control-playlist-duration');
 	if (control_playlist_duration) { control_playlist_duration.parentNode.removeChild(control_playlist_duration); }
 
@@ -218,6 +216,11 @@ function modifyWatchPage() {
 	if (controls.length != 1) { return; }
 	controls[0].style.textAlign = "center";
 
+	var current_time_elements = document.getElementsByClassName("ytp-time-current");
+	if (current_time_elements.length != 1) { return; }
+	var current_time = current_time_elements[0].innerText
+	console.log(current_time);
+
 	var left_controls = document.getElementsByClassName("ytp-left-controls");
 	if (controls.length != 1) { return; }
 	left_controls[0].insertAdjacentHTML('afterend', '<span id="control-playlist-duration">Playlist: 12:34 / 56:18 (90%)</span>');
@@ -225,6 +228,5 @@ function modifyWatchPage() {
 
 ready('#watch-appbar-playlist', function(element) {
 	if (/^\/watch.*/.test(window.location.pathname) === false) { return; }
-	console.log('#watch-appbar-playlist is ready');
-	// modifyWatchPage();
+	modifyWatchPage();
 });
