@@ -203,24 +203,30 @@ ready('#pl-video-list', function(element) {
 
 
 function modifyWatchPage() {
+	// remove the already existing text container before injected a new one
 	var control_playlist_duration = document.getElementById('control-playlist-duration');
 	if (control_playlist_duration) { control_playlist_duration.parentNode.removeChild(control_playlist_duration); }
 
+	// get the url to the playlist's page
 	var playlist_url = document.querySelector("*[data-full-list-id]");
 	if (playlist_url === null) { return; }
+	// extract playlist id from the playlist's url
 	var playlist_id = playlist_url.getAttribute("data-full-list-id");
 	if (playlist_id === null) { return; }
 	console.log(playlist_id);
 
+	// align the new text container to the center
 	var controls = document.getElementsByClassName("ytp-chrome-controls");
 	if (controls.length != 1) { return; }
 	controls[0].style.textAlign = "center";
 
+	// get the time currently into the video
 	var current_time_elements = document.getElementsByClassName("ytp-time-current");
 	if (current_time_elements.length != 1) { return; }
 	var current_time = current_time_elements[0].innerText
 	console.log(current_time);
 
+	// inject the new text container
 	var left_controls = document.getElementsByClassName("ytp-left-controls");
 	if (controls.length != 1) { return; }
 	left_controls[0].insertAdjacentHTML('afterend', '<span id="control-playlist-duration">Playlist: 12:34 / 56:18 (90%)</span>');
@@ -228,5 +234,5 @@ function modifyWatchPage() {
 
 ready('#watch-appbar-playlist', function(element) {
 	if (/^\/watch.*/.test(window.location.pathname) === false) { return; }
-	modifyWatchPage();
+	// modifyWatchPage();
 });
