@@ -214,6 +214,23 @@ function modifyWatchPage() {
 	var playlist_id = playlist_url.getAttribute("data-full-list-id");
 	if (playlist_id === null) { return; }
 	console.log(playlist_id);
+	// construct the url for obtaining the total playlist's duration from the backend server
+	var total_duration_url = "https://youtube-playlist-enhancer.appspot.com/GetTotalPlaylistDuration/v1/" + playlist_id;
+	var request = new XMLHttpRequest();
+	request.open('GET', total_duration_url, true);
+	request.responseType = "document";
+	request.onload = function() {
+		if (this.status == 200) {
+			console.log(this.responseXML);
+		}
+		else {
+			console.log('Expected status code 200, got %s instead.', this.status);
+		}
+	}
+	request.onerror = function() {
+	    console.log('Unable to reach the Total Playlist Duration API.');
+	}
+	request.send();
 
 	// align the new text container to the center
 	var controls = document.getElementsByClassName("ytp-chrome-controls");

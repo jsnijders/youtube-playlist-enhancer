@@ -10,7 +10,8 @@
 
   "permissions": [
     "storage",
-    "*://www.youtube.com/*"
+    "*://www.youtube.com/*",
+    "*://youtube-playlist-enhancer.appspot.com/*"
   ],
   
   "content_scripts": [
