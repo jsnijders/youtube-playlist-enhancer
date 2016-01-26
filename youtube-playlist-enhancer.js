@@ -210,25 +210,29 @@ function modifyWatchPage() {
 	// get the url to the playlist's page
 	var playlist_url = document.querySelector("*[data-full-list-id]");
 	if (playlist_url === null) { return; }
+
 	// extract playlist id from the playlist's url
 	var playlist_id = playlist_url.getAttribute("data-full-list-id");
 	if (playlist_id === null) { return; }
-	console.log(playlist_id);
+	console.info(playlist_id);
+
 	// construct the url for obtaining the total playlist's duration from the backend server
 	var total_duration_url = "https://youtube-playlist-enhancer.appspot.com/GetTotalPlaylistDuration/v1/" + playlist_id;
 	var request = new XMLHttpRequest();
 	request.open('GET', total_duration_url, true);
 	request.responseType = "document";
 	request.onload = function() {
+		// handle a good response
 		if (this.status == 200) {
 			console.log(this.responseXML);
 		}
+		// handle a bad response
 		else {
-			console.log('Expected status code 200, got %s instead.', this.status);
+			console.error('Expected status code 200, got %s instead.', this.status);
 		}
 	}
 	request.onerror = function() {
-	    console.log('Unable to reach the Total Playlist Duration API.');
+	    console.error('Unable to make an HTTP request.');
 	}
 	request.send();
 
