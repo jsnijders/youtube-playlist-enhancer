@@ -217,7 +217,7 @@ function modifyWatchPage() {
 	console.info(playlist_id);
 
 	// construct the url for obtaining the total playlist's duration from the backend server
-	var total_duration_url = "https://youtube-playlist-enhancer.appspot.com/GetTotalPlaylistDuration/v1/" + playlist_id;
+	var total_duration_url = "https://youtube-playlist-enhancer.appspot.com/GetPlaylistDuration/v1/?playlist_id=" + playlist_id;
 	var request = new XMLHttpRequest();
 	request.open('GET', total_duration_url, true);
 	request.responseType = "document";
