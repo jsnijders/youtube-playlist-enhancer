@@ -220,11 +220,12 @@ function modifyWatchPage() {
 	var total_duration_url = "https://youtube-playlist-enhancer.appspot.com/GetPlaylistDuration/v1/?playlist_id=" + playlist_id;
 	var request = new XMLHttpRequest();
 	request.open('GET', total_duration_url, true);
-	request.responseType = "document";
+	request.responseType = "json";
 	request.onload = function() {
 		// handle a good response
 		if (this.status == 200) {
-			console.log(this.responseXML);
+			j = this.response;
+			console.log(j);
 		}
 		// handle a bad response
 		else {
