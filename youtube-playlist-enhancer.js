@@ -226,6 +226,15 @@ function modifyWatchPage() {
 		if (this.status == 200) {
 			j = this.response;
 			console.log(j);
+			
+			var total_seconds = j["total_duration"];
+
+			var hours = Math.floor(total_seconds / 3600);
+			var minutes = Math.floor((total_seconds % 3600) / 60);
+			var seconds = (total_seconds % 3600) % 60;
+			console.log(hours + " hours");
+			console.log(minutes + " minutes");
+			console.log(seconds + " seconds");
 		}
 		// handle a bad response
 		else {
