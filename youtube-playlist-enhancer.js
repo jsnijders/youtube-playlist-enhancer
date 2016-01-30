@@ -226,7 +226,7 @@ function modifyWatchPage() {
 		if (this.status == 200) {
 			j = this.response;
 			console.log(j);
-			
+
 			var total_seconds = j["total_duration"];
 
 			var hours = Math.floor(total_seconds / 3600);
@@ -235,6 +235,12 @@ function modifyWatchPage() {
 			console.log(hours + " hours");
 			console.log(minutes + " minutes");
 			console.log(seconds + " seconds");
+
+			var total_duration = "";
+			if (hours > 0) { total_duration += pad(hours, 2) + ":"; }
+			total_duration += pad(minutes, 2) + ":";
+			total_duration += pad(seconds, 2);
+			console.log("total duration = " + total_duration);
 		}
 		// handle a bad response
 		else {
