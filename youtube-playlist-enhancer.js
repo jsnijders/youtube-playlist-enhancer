@@ -224,11 +224,14 @@ function modifyWatchPage() {
 	request.onload = function() {
 		// handle a good response
 		if (this.status == 200) {
-			j = this.response;
+			// assign JSON response to a variable
+			var j = this.response;
 			console.log(j);
 
+			// get the playlist's total duration
 			var total_seconds = j["total_duration"];
 
+			// constructing all the different time parts from the playlist's total duration in seconds
 			var hours = Math.floor(total_seconds / 3600);
 			var minutes = Math.floor((total_seconds % 3600) / 60);
 			var seconds = (total_seconds % 3600) % 60;
@@ -236,11 +239,28 @@ function modifyWatchPage() {
 			console.log(minutes + " minutes");
 			console.log(seconds + " seconds");
 
+			// HH:MM:SS format for in-player use
 			var total_duration = "";
 			if (hours > 0) { total_duration += pad(hours, 2) + ":"; }
 			total_duration += pad(minutes, 2) + ":";
 			total_duration += pad(seconds, 2);
 			console.log("total duration = " + total_duration);
+
+			// align the new text container to the center
+			var controls = document.getElementsByClassName("ytp-chrome-controls");
+			if (controls.length != 1) { return; }
+			controls[0].style.textAlign = "center";
+
+			// get the time currently into the video
+			var current_time_elements = document.getElementsByClassName("ytp-time-current");
+			if (current_time_elements.length != 1) { return; }
+			var current_time = current_time_elements[0].innerText
+			console.log(current_time);
+
+			// inject the new text container
+			var left_controls = document.getElementsByClassName("ytp-left-controls");
+			if (controls.length != 1) { return; }
+			left_controls[0].insertAdjacentHTML('afterend', '<span id="control-playlist-duration">Playlist: 12:34 / 56:18 (90%)</span>');
 		}
 		// handle a bad response
 		else {
@@ -252,21 +272,6 @@ function modifyWatchPage() {
 	}
 	request.send();
 
-	// align the new text container to the center
-	var controls = document.getElementsByClassName("ytp-chrome-controls");
-	if (controls.length != 1) { return; }
-	controls[0].style.textAlign = "center";
-
-	// get the time currently into the video
-	var current_time_elements = document.getElementsByClassName("ytp-time-current");
-	if (current_time_elements.length != 1) { return; }
-	var current_time = current_time_elements[0].innerText
-	console.log(current_time);
-
-	// inject the new text container
-	var left_controls = document.getElementsByClassName("ytp-left-controls");
-	if (controls.length != 1) { return; }
-	left_controls[0].insertAdjacentHTML('afterend', '<span id="control-playlist-duration">Playlist: 12:34 / 56:18 (90%)</span>');
 }
 
 ready('#watch-appbar-playlist', function(element) {
