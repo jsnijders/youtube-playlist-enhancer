@@ -115,7 +115,7 @@ function modifyPlaylistPage() {
 	total_duration_short += pad(seconds, 2);
 
 	// version 2: the human readable version on the lefthand side of the container
-	play_all_link = document.getElementsByClassName("playlist-play-all")[0].getAttribute("href");
+	var play_all_link = document.getElementsByClassName("playlist-play-all")[0].getAttribute("href");
 	var total_duration_long = "<p>";
 	if (years > 0) { total_duration_long += years + " years, "; }
 	if (days > 0) { total_duration_long += days + " days, "; }
@@ -149,7 +149,7 @@ function modifyPlaylistPage() {
 	var finished_watching = new Date();
 	finished_watching.setSeconds(finished_watching.getSeconds() + total_seconds);
 
-	// 1nd, 2nd, 3rd, 4th, etc.
+	// 1st, 2nd, 3rd, 4th, etc.
 	var suffix = "th";
 	if (include([1, 21, 31], finished_watching.getDate())) { suffix = "st"; }
 	else if (include([2, 22], finished_watching.getDate())) { suffix = "nd"; }
