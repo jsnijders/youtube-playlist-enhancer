@@ -151,7 +151,7 @@ function modifyPlaylistPage() {
 
 	// 1nd, 2nd, 3rd, 4th, etc.
 	var suffix = "th";
-	if (include([1, 21], finished_watching.getDate())) { suffix = "st"; }
+	if (include([1, 21, 31], finished_watching.getDate())) { suffix = "st"; }
 	else if (include([2, 22], finished_watching.getDate())) { suffix = "nd"; }
 	else if (include([3, 23], finished_watching.getDate())) { suffix = "rd"; }
 
@@ -254,7 +254,7 @@ function modifyWatchPage() {
 			// get the time currently into the video
 			var current_time_elements = document.getElementsByClassName("ytp-time-current");
 			if (current_time_elements.length != 1) { return; }
-			var current_time = current_time_elements[0].innerText
+			var current_time = current_time_elements[0].innerText;
 			console.log(current_time);
 
 			// inject the new text container
