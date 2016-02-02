@@ -97,7 +97,7 @@ function modifyPlaylistPage() {
 	});
 
 	// ignore playlists without any videos
-	if (total_seconds == 0) { return; }
+	if (total_seconds === 0) { return; }
 
 	// add a new container with the playlist's total duration
 	var years = Math.floor(total_seconds / 31536000);
@@ -229,7 +229,7 @@ function modifyWatchPage() {
 			console.log(j);
 
 			// get the playlist's total duration
-			var total_seconds = j["total_duration"];
+			var total_seconds = j.total_duration;
 
 			// constructing all the different time parts from the playlist's total duration in seconds
 			var hours = Math.floor(total_seconds / 3600);
