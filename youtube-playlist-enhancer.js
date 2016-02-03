@@ -1,3 +1,8 @@
+/*jshint esversion: 6 */
+/*jshint multistr: true */
+
+
+
 // this function Copyright (C) 2015 Ryan Morr
 // http://ryanmorr.com/using-mutation-observers-to-watch-for-element-availability/
 (function(win){
@@ -54,9 +59,7 @@ if (!String.prototype.format) {
   String.prototype.format = function() {
     var args = arguments;
     return this.replace(/{(\d+)}/g, function(match, number) { 
-      return typeof args[number] != 'undefined'
-        ? args[number]
-        : match
+      return typeof args[number] != 'undefined' ? args[number] : match
       ;
     });
   };
@@ -266,10 +269,10 @@ function modifyWatchPage() {
 		else {
 			console.error('Expected status code 200, got %s instead.', this.status);
 		}
-	}
+	};
 	request.onerror = function() {
 	    console.error('Unable to make an HTTP request.');
-	}
+	};
 	request.send();
 
 }
