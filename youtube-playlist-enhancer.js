@@ -157,6 +157,7 @@ function modifyPlaylistPage() {
 	if (include([1, 21, 31], finished_watching.getDate())) { suffix = "st"; }
 	else if (include([2, 22], finished_watching.getDate())) { suffix = "nd"; }
 	else if (include([3, 23], finished_watching.getDate())) { suffix = "rd"; }
+	suffix = "";
 
 	// human readable notation for days and months
 	// to be used for the projected time and date
