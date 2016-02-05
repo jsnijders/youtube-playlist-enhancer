@@ -152,24 +152,16 @@ function modifyPlaylistPage() {
 	var finished_watching = new Date();
 	finished_watching.setSeconds(finished_watching.getSeconds() + total_seconds);
 
-	// 1st, 2nd, 3rd, 4th, etc.
-	var suffix = "th";
-	if (include([1, 21, 31], finished_watching.getDate())) { suffix = "st"; }
-	else if (include([2, 22], finished_watching.getDate())) { suffix = "nd"; }
-	else if (include([3, 23], finished_watching.getDate())) { suffix = "rd"; }
-	suffix = "";
-
 	// human readable notation for days and months
 	// to be used for the projected time and date
 	const all_days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 	const all_months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 	// inject projected time and date in the new container
-	var finished_watching_formatted = "{0} {1} {2}{3}, {4} at {5}:{6}:{7}".format(
+	var finished_watching_formatted = "{0}, {1} {2}, {3} at {4}:{5}:{6}".format(
 		all_days[finished_watching.getDay()],
 		all_months[finished_watching.getMonth()],
 		finished_watching.getDate(),
-		suffix,
 		finished_watching.getFullYear(),
 		pad(finished_watching.getHours(), 2),
 		pad(finished_watching.getMinutes(), 2),
