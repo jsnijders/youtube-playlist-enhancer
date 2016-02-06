@@ -256,7 +256,7 @@ function modifyWatchPage() {
 			// inject the new text container
 			var left_controls = document.getElementsByClassName("ytp-left-controls");
 			if (controls.length != 1) { return; }
-			left_controls[0].insertAdjacentHTML('afterend', '<span id="control-playlist-duration">Playlist: 12:34 / 56:18 (90%)</span>');
+			left_controls[0].insertAdjacentHTML('afterend', '<span id="control-playlist-duration">Playlist: '+current_time+' / '+total_duration+' (90%)</span>');
 		}
 		// handle a bad response
 		else {
