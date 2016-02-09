@@ -89,15 +89,16 @@ function modifyPlaylistPage() {
 	var total_seconds = 0;
 	var timestamps = document.querySelectorAll(".timestamp > *");
 
-	Array.prototype.forEach.call(timestamps, function(element, i) {
-		var value = element.innerText;
-		
+	for (var i in timestamps) {
+		var value = timestamps[i].innerText;
+		if (value === undefined) { continue; }
+
 		// finding 3 parts means H:M:SS
 		// finding 2 parts means M:SS
 		var parts = value.split(":");
 		if (parts.length == 3) { total_seconds += parseInt(parts[0]*60*60) + parseInt(parts[1]*60) + parseInt(parts[2]); }
 		else { total_seconds += parseInt(parts[0]*60) + parseInt(parts[1]); }
-	});
+	}
 
 	// ignore playlists without any videos
 	if (total_seconds === 0) { return; }
