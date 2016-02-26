@@ -232,16 +232,12 @@ function modifyWatchPage() {
 			var playlist_duration_hours = Math.floor(total_seconds / 3600);
 			var playlist_duration_minutes = Math.floor((total_seconds % 3600) / 60);
 			var playlist_duration_seconds = (total_seconds % 3600) % 60;
-			console.log(playlist_duration_hours + " playlist_duration_hours");
-			console.log(playlist_duration_minutes + " playlist_duration_minutes");
-			console.log(playlist_duration_seconds + " playlist_duration_seconds");
 
 			// HH:MM:SS format for in-player use
 			var playlist_duration_text = "";
 			if (playlist_duration_hours > 0) { playlist_duration_text += pad(playlist_duration_hours, 2) + ":"; }
 			playlist_duration_text += pad(playlist_duration_minutes, 2) + ":";
 			playlist_duration_text += pad(playlist_duration_seconds, 2);
-			console.log("playlist_duration_text = " + playlist_duration_text);
 
 			// align the new text container to the center
 			var controls = document.getElementsByClassName("ytp-chrome-controls");
@@ -252,15 +248,13 @@ function modifyWatchPage() {
 			var current_time_elements = document.getElementsByClassName("ytp-time-current");
 			if (current_time_elements.length != 1) { return; }
 			var video_progress_text = current_time_elements[0].innerText;
-			console.log("video_progress_text = " + video_progress_text);
 			
 			var video_progress = 0;
 			var parts = video_progress_text.split(":");
 			if (parts.length == 3) { video_progress += parseInt(parts[0]*60*60) + parseInt(parts[1]*60) + parseInt(parts[2]); }
 			else { video_progress += parseInt(parts[0]*60) + parseInt(parts[1]); }
-			console.log("video_progress = " + video_progress);
+			
 			var percentage = Math.round(video_progress / total_seconds * 100, 2);
-			console.log("percentage = " + percentage);
 
 			// inject the new text container
 			var left_controls = document.getElementsByClassName("ytp-left-controls");
