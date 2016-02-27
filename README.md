@@ -11,8 +11,12 @@ https://chrome.google.com/webstore/detail/youtube-playlist-enhancer/femnjomnioah
 ## Requirements
 - Chrome 20 or higher
 
-## Screenshot
+## Screenshots
 ![Screenshot 1](screenshot-1.png)
+
+## Upcoming features
+- in-player indication of playlist progression
+![Screenshot 2](screenshot-2.png)
 
 ## License
 [MIT](LICENSE)
